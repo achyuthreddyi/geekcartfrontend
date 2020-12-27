@@ -40,6 +40,7 @@ const Home = ({ match }) => {
       {loading && <Loader />}
       {/* {error && <Message variant='success' children={error}></Message>} */}
       {/* eslint-disable */}
+      <h1>configured with github actions and runnign on ec2 instances</h1>
       {!keyword && <h1>Latest Products @ cheapest prices</h1>}
 
       {loading ? (
