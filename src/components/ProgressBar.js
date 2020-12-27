@@ -9,6 +9,7 @@ const ProgressBar = ({ file, setFile, setImage }) => {
       setFile(null)
       setImage(url)
     }
+    // eslint-disable-next-line
   }, [url, setFile])
   return <div className='progress-bar' style={{ width: progress + '%' }} />
 }
