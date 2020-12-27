@@ -42,7 +42,7 @@ export const login = (email, password) => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.post(
-      'http://localhost:5000/api/user/signin',
+      '/api/user/signin',
       { email, password },
       config
     )
@@ -83,7 +83,7 @@ export const register = (name, email, password) => async (
       }
     }
     const { data } = await axios.post(
-      'http://localhost:5000/api/user/signup',
+      '/api/user/signup',
       { name, email, password },
       config
     )
@@ -153,10 +153,7 @@ export const getuserProfile = id => async (dispatch, getState) => {
       }
     }
     console.log('hey man innova crysta')
-    const { data } = await axios.get(
-      `http://localhost:5000/api/user/${id}`,
-      config
-    )
+    const { data } = await axios.get(`/api/user/${id}`, config)
     console.log('data from the get user profile', data)
 
     dispatch({
@@ -192,11 +189,7 @@ export const updateUserProfile = user => async (dispatch, getState) => {
         authorization: `Bearer ${userInfo.token}`
       }
     }
-    const { data } = await axios.put(
-      'http://localhost:5000/api/user/profile',
-      user,
-      config
-    )
+    const { data } = await axios.put('/api/user/profile', user, config)
 
     dispatch({
       type: USER_UPDATE_PROFILE_SUCCESS,
@@ -239,10 +232,7 @@ export const listUsers = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    const { data } = await axios.get(
-      'http://localhost:5000/api/user/admin/userlist',
-      config
-    )
+    const { data } = await axios.get('/api/user/admin/userlist', config)
 
     dispatch({
       type: USER_LIST_SUCCESS,
@@ -275,11 +265,7 @@ export const updateUser = user => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    const { data } = await axios.put(
-      `http://localhost:5000/api/user/${user._id}`,
-      user,
-      config
-    )
+    const { data } = await axios.put(`/api/user/${user._id}`, user, config)
 
     dispatch({
       type: USER_UPDATE_SUCCESS
@@ -316,7 +302,7 @@ export const deleteUser = id => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    await axios.delete(`http://localhost:5000/api/user/${id}`, config)
+    await axios.delete(`/api/user/${id}`, config)
 
     dispatch({
       type: USER_DELETE_SUCCESS

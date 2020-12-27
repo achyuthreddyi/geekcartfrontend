@@ -35,11 +35,7 @@ export const createOrder = order => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    const { data } = await axios.post(
-      'http://localhost:5000/api/orders/',
-      order,
-      config
-    )
+    const { data } = await axios.post('/api/orders/', order, config)
 
     dispatch({
       type: ORDER_CREATE_SUCCESS,
@@ -71,10 +67,7 @@ export const getOrderDetails = id => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    const { data } = await axios.get(
-      `http://localhost:5000/api/orders/${id}`,
-      config
-    )
+    const { data } = await axios.get(`/api/orders/${id}`, config)
 
     dispatch({
       type: ORDER_DETAILS_SUCCESS,
@@ -110,7 +103,7 @@ export const payOrder = (orderId, paymentResult) => async (
       }
     }
     const { data } = await axios.put(
-      `http://localhost:5000/api/orders/${orderId}/pay`,
+      `/api/orders/${orderId}/pay`,
       paymentResult,
       config
     )
@@ -144,11 +137,7 @@ export const deliverOrder = order => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    await axios.put(
-      `http://localhost:5000/api/orders/${order._id}/deliver`,
-      {},
-      config
-    )
+    await axios.put(`/api/orders/${order._id}/deliver`, {}, config)
 
     dispatch({
       type: ORDER_DELIVER_SUCCESS
@@ -178,10 +167,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    const { data } = await axios.get(
-      'http://localhost:5000/api/orders/myorders',
-      config
-    )
+    const { data } = await axios.get('/api/orders/myorders', config)
 
     dispatch({
       type: MY_ORDER_DETAILS_SUCCESS,
@@ -212,10 +198,7 @@ export const listAllOrders = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    const { data } = await axios.get(
-      'http://localhost:5000/api/orders/',
-      config
-    )
+    const { data } = await axios.get('/api/orders/', config)
 
     dispatch({
       type: ORDER_LIST_SUCCESS,

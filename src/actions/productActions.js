@@ -45,7 +45,7 @@ export const listProductsDetails = id => async dispatch => {
   try {
     console.log('dispatch ', dispatch)
     dispatch({ type: PRODUCT_DETAILS_REQUEST })
-    const { data } = await axios.get(`http://localhost:5000/api/product/${id}`)
+    const { data } = await axios.get(`/api/product/${id}`)
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
       payload: data
@@ -74,7 +74,7 @@ export const deleteProduct = id => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    await axios.delete(`http://localhost:5000/api/product/${id}`, config)
+    await axios.delete(`/api/product/${id}`, config)
 
     dispatch({
       type: PRODUCT_DELETE_SUCCESS
@@ -103,11 +103,7 @@ export const createProduct = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    const { data } = await axios.post(
-      'http://localhost:5000/api/product/admin/create',
-      {},
-      config
-    )
+    const { data } = await axios.post('/api/product/admin/create', {}, config)
 
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
@@ -139,7 +135,7 @@ export const updateProduct = product => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.put(
-      `http://localhost:5000/api/product/${product._id}`,
+      `/api/product/${product._id}`,
       product,
       config
     )
@@ -184,11 +180,7 @@ export const createProductReview = (productId, review) => async (
     //   )
     // )
 
-    await axios.post(
-      `http://localhost:5000/api/product/${productId}/reviews`,
-      review,
-      config
-    )
+    await axios.post(`/api/product/${productId}/reviews`, review, config)
 
     dispatch({
       type: PRODUCT_CREATE_REVIEW_SUCCESS
@@ -207,7 +199,7 @@ export const createProductReview = (productId, review) => async (
 export const listTopProducts = () => async dispatch => {
   try {
     dispatch({ type: PRODUCT_TOP_REQUEST })
-    const { data } = await axios.get('http://localhost:5000/api/product/top')
+    const { data } = await axios.get('/api/product/top')
     dispatch({
       type: PRODUCT_TOP_SUCCESS,
       payload: data
