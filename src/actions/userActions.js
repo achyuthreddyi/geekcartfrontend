@@ -42,7 +42,7 @@ export const login = (email, password) => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.post(
-      'http://13.233.225.31/api/user/signin',
+      'http://15.207.55.33:5000/api/user/signin',
       { email, password },
       config
     )
@@ -83,7 +83,7 @@ export const register = (name, email, password) => async (
       }
     }
     const { data } = await axios.post(
-      'http://13.233.225.31/api/user/signup',
+      'http://15.207.55.33:5000/api/user/signup',
       { name, email, password },
       config
     )
@@ -190,7 +190,7 @@ export const updateUserProfile = user => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.put(
-      'http://13.233.225.31/api/user/profile',
+      'http://15.207.55.33:5000/api/user/profile',
       user,
       config
     )
@@ -237,7 +237,7 @@ export const listUsers = () => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.get(
-      'http://13.233.225.31/api/user/admin/userlist',
+      'http://15.207.55.33:5000/api/user/admin/userlist',
       config
     )
 
@@ -273,7 +273,7 @@ export const updateUser = user => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.put(
-      `http://13.233.225.31/api/user/${user._id}`,
+      `http://15.207.55.33:5000/api/user/${user._id}`,
       user,
       config
     )
@@ -313,7 +313,7 @@ export const deleteUser = id => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    await axios.delete(`http://13.233.225.31/api/user/${id}`, config)
+    await axios.delete(`http://15.207.55.33:5000/api/user/${id}`, config)
 
     dispatch({
       type: USER_DELETE_SUCCESS

@@ -63,7 +63,7 @@ const OrderScreen = ({ match, history }) => {
     }
     const addPayPalScript = async () => {
       const { data: clientId } = await axios.get(
-        'http://13.233.225.31/api/config/paypal'
+        'http://15.207.55.33:5000/api/config/paypal'
       )
       const script = document.createElement('script')
       script.type = 'text/javascript'
