@@ -42,7 +42,7 @@ export const login = (email, password) => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.post(
-      'http://15.207.55.33:5000/api/user/signin',
+      'http://65.0.205.76:5000/api/user/signin',
       { email, password },
       config
     )
@@ -83,7 +83,7 @@ export const register = (name, email, password) => async (
       }
     }
     const { data } = await axios.post(
-      'http://15.207.55.33:5000/api/user/signup',
+      'http://65.0.205.76:5000/api/user/signup',
       { name, email, password },
       config
     )
@@ -153,7 +153,10 @@ export const getuserProfile = id => async (dispatch, getState) => {
       }
     }
     console.log('hey man innova crysta')
-    const { data } = await axios.get(`/api/user/${id}`, config)
+    const { data } = await axios.get(
+      `http://65.0.205.76:5000/api/user/${id}`,
+      config
+    )
     console.log('data from the get user profile', data)
 
     dispatch({
@@ -190,7 +193,7 @@ export const updateUserProfile = user => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.put(
-      'http://15.207.55.33:5000/api/user/profile',
+      'http://65.0.205.76:5000/api/user/profile',
       user,
       config
     )
@@ -237,7 +240,7 @@ export const listUsers = () => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.get(
-      'http://15.207.55.33:5000/api/user/admin/userlist',
+      'http://65.0.205.76:5000/api/user/admin/userlist',
       config
     )
 
@@ -273,7 +276,7 @@ export const updateUser = user => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.put(
-      `http://15.207.55.33:5000/api/user/${user._id}`,
+      `http://65.0.205.76:5000/api/user/${user._id}`,
       user,
       config
     )
@@ -313,7 +316,7 @@ export const deleteUser = id => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    await axios.delete(`http://15.207.55.33:5000/api/user/${id}`, config)
+    await axios.delete(`http://65.0.205.76:5000/api/user/${id}`, config)
 
     dispatch({
       type: USER_DELETE_SUCCESS

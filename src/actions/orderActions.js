@@ -36,7 +36,7 @@ export const createOrder = order => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.post(
-      'http://15.207.55.33:5000/api/orders/',
+      'http://65.0.205.76:5000/api/orders/',
       order,
       config
     )
@@ -72,7 +72,7 @@ export const getOrderDetails = id => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.get(
-      `http://15.207.55.33:5000/api/orders/${id}`,
+      `http://65.0.205.76:5000/api/orders/${id}`,
       config
     )
 
@@ -110,7 +110,7 @@ export const payOrder = (orderId, paymentResult) => async (
       }
     }
     const { data } = await axios.put(
-      `http://15.207.55.33:5000/api/orders/${orderId}/pay`,
+      `http://65.0.205.76:5000/api/orders/${orderId}/pay`,
       paymentResult,
       config
     )
@@ -145,7 +145,7 @@ export const deliverOrder = order => async (dispatch, getState) => {
       }
     }
     await axios.put(
-      `http://15.207.55.33:5000/api/orders/${order._id}/deliver`,
+      `http://65.0.205.76:5000/api/orders/${order._id}/deliver`,
       {},
       config
     )
@@ -179,7 +179,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.get(
-      'http://15.207.55.33:5000/api/orders/myorders',
+      'http://65.0.205.76:5000/api/orders/myorders',
       config
     )
 
@@ -213,7 +213,7 @@ export const listAllOrders = () => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.get(
-      'http://15.207.55.33:5000/api/orders/',
+      'http://65.0.205.76:5000/api/orders/',
       config
     )
 

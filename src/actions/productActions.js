@@ -31,7 +31,7 @@ export const listProducts = (keyword = '') => async disapatch => {
     //   `http://13.233.225.31/api/product?keyword=${keyword}`
     // )
     const { data } = await axios.get(
-      `http://15.207.55.33:5000/api/product?keyword=${keyword}`
+      `http://65.0.205.76:5000/api/product?keyword=${keyword}`
     )
     // console.log(await axios.get('http://localhost:5000/api/product/'))
     disapatch({
@@ -52,7 +52,7 @@ export const listProductsDetails = id => async dispatch => {
     console.log('dispatch ', dispatch)
     dispatch({ type: PRODUCT_DETAILS_REQUEST })
     const { data } = await axios.get(
-      `http://15.207.55.33:5000/api/product/${id}`
+      `http://65.0.205.76:5000/api/product/${id}`
     )
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -82,7 +82,7 @@ export const deleteProduct = id => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    await axios.delete(`http://15.207.55.33:5000/api/product/${id}`, config)
+    await axios.delete(`http://65.0.205.76:5000/api/product/${id}`, config)
 
     dispatch({
       type: PRODUCT_DELETE_SUCCESS
@@ -112,7 +112,7 @@ export const createProduct = () => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.post(
-      'http://15.207.55.33:5000/api/product/admin/create',
+      'http://65.0.205.76:5000/api/product/admin/create',
       {},
       config
     )
@@ -147,7 +147,7 @@ export const updateProduct = product => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.put(
-      `http://15.207.55.33:5000/api/product/${product._id}`,
+      `http://65.0.205.76:5000/api/product/${product._id}`,
       product,
       config
     )
@@ -193,7 +193,7 @@ export const createProductReview = (productId, review) => async (
     // )
 
     await axios.post(
-      `http://15.207.55.33:5000/api/product/${productId}/reviews`,
+      `http://65.0.205.76:5000/api/product/${productId}/reviews`,
       review,
       config
     )
@@ -215,7 +215,7 @@ export const createProductReview = (productId, review) => async (
 export const listTopProducts = () => async dispatch => {
   try {
     dispatch({ type: PRODUCT_TOP_REQUEST })
-    const { data } = await axios.get('http://15.207.55.33:5000/api/product/top')
+    const { data } = await axios.get('http://65.0.205.76:5000/api/product/top')
     dispatch({
       type: PRODUCT_TOP_SUCCESS,
       payload: data
