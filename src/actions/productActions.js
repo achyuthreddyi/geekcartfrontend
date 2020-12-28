@@ -185,7 +185,11 @@ export const createProductReview = (productId, review) => async (
     //   )
     // )
 
-    await axios.post(`/api/product/${productId}/reviews`, review, config)
+    await axios.post(
+      `http://13.233.225.31/api/product/${productId}/reviews`,
+      review,
+      config
+    )
 
     dispatch({
       type: PRODUCT_CREATE_REVIEW_SUCCESS
