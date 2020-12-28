@@ -27,8 +27,11 @@ export const listProducts = (keyword = '') => async disapatch => {
   try {
     disapatch({ type: PRODUCT_LIST_REQUEST })
     // const { data } = await axios.get(`/api/product?keyword=${keyword}`)
+    // const { data } = await axios.get(
+    //   `http://13.233.225.31/api/product?keyword=${keyword}`
+    // )
     const { data } = await axios.get(
-      `http://13.233.225.31/api/product?keyword=${keyword}`
+      `http://15.207.55.33:5000/api/product?keyword=${keyword}`
     )
     // console.log(await axios.get('http://localhost:5000/api/product/'))
     disapatch({
