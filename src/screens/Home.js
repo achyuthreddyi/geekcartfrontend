@@ -20,7 +20,8 @@ const Home = ({ match }) => {
 
   useEffect(() => {
     dispatch(listProducts(keyword))
-  }, [dispatch, keyword])
+    // eslint-disable-next-line
+  }, [dispatch])
 
   console.log(productList)
   return (

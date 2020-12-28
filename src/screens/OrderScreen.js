@@ -86,7 +86,8 @@ const OrderScreen = ({ match, history }) => {
         setSdkReady(true)
       }
     }
-  }, [dispatch, order, orderId, successPay, history, successDeliver, userInfo])
+    // eslint-disable-next-line
+  }, [dispatch, order, orderId, successPay, successDeliver, userInfo])
 
   const deliverHandler = () => {
     dispatch(deliverOrder(order))

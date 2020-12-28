@@ -24,7 +24,8 @@ const OrderListScreen = ({ history, match }) => {
         history.push('/login')
       }
     },
-    [dispatch, history, userLogin, userInfo]
+    // eslint-disable-next-line
+    [dispatch, history, userLogin]
   )
 
   return (
