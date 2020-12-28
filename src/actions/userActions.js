@@ -42,7 +42,7 @@ export const login = (email, password) => async (dispatch, getState) => {
       }
     }
     const { data } = await axios.post(
-      '/api/user/signin',
+      'http://13.233.225.31/api/user/signin',
       { email, password },
       config
     )
@@ -83,7 +83,7 @@ export const register = (name, email, password) => async (
       }
     }
     const { data } = await axios.post(
-      '/api/user/signup',
+      'http://13.233.225.31/api/user/signup',
       { name, email, password },
       config
     )
@@ -189,7 +189,11 @@ export const updateUserProfile = user => async (dispatch, getState) => {
         authorization: `Bearer ${userInfo.token}`
       }
     }
-    const { data } = await axios.put('/api/user/profile', user, config)
+    const { data } = await axios.put(
+      'http://13.233.225.31/api/user/profile',
+      user,
+      config
+    )
 
     dispatch({
       type: USER_UPDATE_PROFILE_SUCCESS,
@@ -232,7 +236,10 @@ export const listUsers = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    const { data } = await axios.get('/api/user/admin/userlist', config)
+    const { data } = await axios.get(
+      'http://13.233.225.31/api/user/admin/userlist',
+      config
+    )
 
     dispatch({
       type: USER_LIST_SUCCESS,
@@ -265,7 +272,11 @@ export const updateUser = user => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    const { data } = await axios.put(`/api/user/${user._id}`, user, config)
+    const { data } = await axios.put(
+      `http://13.233.225.31/api/user/${user._id}`,
+      user,
+      config
+    )
 
     dispatch({
       type: USER_UPDATE_SUCCESS
@@ -302,7 +313,7 @@ export const deleteUser = id => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`
       }
     }
-    await axios.delete(`/api/user/${id}`, config)
+    await axios.delete(`http://13.233.225.31/api/user/${id}`, config)
 
     dispatch({
       type: USER_DELETE_SUCCESS
