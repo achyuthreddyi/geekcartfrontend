@@ -1,11 +1,44 @@
 main {
   min-height: 80vh;
-  /* background-color: #92a8d1; */
+  background-color: #f3f2ef;
 }
 
-.logo {
-  font-family: 'Syne Tactile', cursive;
+.header {
+  background-color: #131921;
+  /* color: white; */
 }
+.header .logo {
+  font-family: 'Syne Tactile', cursive;
+  /* background: #fdbd69; */
+  color: white;
+}
+#username {
+  color: white;
+  align-items: center;
+}
+#adminmenu {
+  color: red;
+}
+#cart {
+  color: white;
+}
+/* .header .username {
+  color: #fdbd69;
+} */
+.cart {
+  color: #fdbd69;
+}
+
+.footer {
+  background-color: #f3f2ef;
+  width: 100%;
+}
+
+.search__button {
+  background-color: #fdbd69;
+  color: black;
+}
+
 h3 {
   padding: 1rem 0;
 }

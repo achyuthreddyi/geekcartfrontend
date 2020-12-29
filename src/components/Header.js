@@ -18,7 +18,13 @@ const Header = () => {
   }
 
   return (
-    <Navbar bg='dark' variant='dark' expand='lg'>
+    <Navbar
+      // bg='primary'
+      // variant='white'
+      // color='white'
+      expand='lg'
+      className='header'
+    >
       <Container>
         <LinkContainer to='/'>
           <Navbar.Brand className='logo'>geekcart</Navbar.Brand>
@@ -27,8 +33,8 @@ const Header = () => {
         <Navbar.Collapse id='basic-navbar-nav'>
           <Route render={({ history }) => <SearchBox history={history} />} />
           <Nav className='ml-auto'>
-            <LinkContainer to='/cart'>
-              <Nav.Link>
+            <LinkContainer to='/cart' className='cart'>
+              <Nav.Link id='cart'>
                 <HiShoppingCart size={30} />
               </Nav.Link>
             </LinkContainer>
@@ -43,7 +49,7 @@ const Header = () => {
               </NavDropdown>
             ) : (
               <LinkContainer to='/login'>
-                <Nav.Link>
+                <Nav.Link id='username'>
                   <AiFillLock size={30} /> Sign In
                 </Nav.Link>
               </LinkContainer>
