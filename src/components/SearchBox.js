@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Form, Button } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
+import { BiSearchAlt } from 'react-icons/bi'
 
 const SearchBox = ({ history }) => {
   const [keyword, setKeyword] = useState('')
@@ -19,16 +20,16 @@ const SearchBox = ({ history }) => {
         type='text'
         name='q'
         onChange={e => setKeyword(e.target.value)}
-        placeholder='search Products'
+        placeholder='Search Products here'
         className='mr-sm-2 ml-sm-5'
       />
-      <Button
+      {/* <Button
         type='submit'
         // variant='outline-success'
         className='p-2 search__button'
-      >
-        Search
-      </Button>
+      > */}
+      <BiSearchAlt />
+      {/* </Button> */}
     </Form>
   )
 }

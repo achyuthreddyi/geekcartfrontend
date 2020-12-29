@@ -8,36 +8,36 @@ const Rating = ({ value, text, color }) => {
     <div className='rating'>
       <span>
         {value >= 1 ? (
-          <AiFillStar style={{ color: color }} />
+          <AiFillStar style={{ color: '#fdbd69' }} />
         ) : value >= 0.5 ? (
-          <BsStarHalf style={{ color: color }} />
+          <BsStarHalf style={{ color: '#fdbd69' }} />
         ) : (
           <AiOutlineStar />
         )}
       </span>
       <span>
         {value >= 2 ? (
-          <AiFillStar style={{ color: color }} />
+          <AiFillStar style={{ color: '#fdbd69' }} />
         ) : value >= 1.5 ? (
-          <BsStarHalf style={{ color: color }} />
+          <BsStarHalf style={{ color: '#fdbd69' }} />
         ) : (
           <AiOutlineStar />
         )}{' '}
       </span>
       <span>
         {value >= 3 ? (
-          <AiFillStar style={{ color: color }} />
+          <AiFillStar style={{ color: '#fdbd69' }} />
         ) : value >= 2.5 ? (
-          <BsStarHalf style={{ color: color }} />
+          <BsStarHalf style={{ color: '#fdbd69' }} />
         ) : (
           <AiOutlineStar />
         )}{' '}
       </span>
       <span>
         {value >= 4 ? (
-          <AiFillStar style={{ color: color }} />
+          <AiFillStar style={{ color: '#fdbd69' }} />
         ) : value >= 3.5 ? (
-          <BsStarHalf style={{ color: color }} />
+          <BsStarHalf style={{ color: '#fdbd69' }} />
         ) : (
           <AiOutlineStar />
         )}{' '}
@@ -45,9 +45,9 @@ const Rating = ({ value, text, color }) => {
       <span>
         {' '}
         {value >= 5 ? (
-          <AiFillStar style={{ color: color }} />
+          <AiFillStar style={{ color: '#fdbd69' }} />
         ) : value >= 4.5 ? (
-          <BsStarHalf style={{ color: color }} />
+          <BsStarHalf style={{ color: '#fdbd69' }} />
         ) : (
           <AiOutlineStar />
         )}{' '}
