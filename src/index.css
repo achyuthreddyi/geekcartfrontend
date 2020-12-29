@@ -4,23 +4,48 @@ main {
 }
 
 .header {
-  background-color: #131921;
+  background-color: #044255;
   /* color: white; */
 }
-.header .logo {
-  font-family: 'Syne Tactile', cursive;
-  /* background: #fdbd69; */
-  color: white;
+/* .header .logo { */
+/* font-family: 'Syne Tactile', cursive; */
+/* background: #fdbd69; */
+/* color: #fdbd69; */
+/* } */
+/* .header .logo :hover { */
+/* font-family: 'Syne Tactile', cursive; */
+/* background: #fdbd69; */
+/* color: black; */
+/* } */
+#logo {
+  color: #fdbd69;
+  font-family: 'Audiowide', cursive;
+  font-weight: 100;
+  font-size: 40px;
+  transition: transform 1.2s;
 }
+#logo:hover {
+  transform: scale(1.2);
+}
+.helmet {
+  font-family: 'Audiowide', cursive;
+}
+
 #username {
   color: white;
   align-items: center;
+  font-family: 'Merriweather', serif;
 }
 #adminmenu {
   color: red;
+  font-family: 'Merriweather', serif;
 }
 #cart {
   color: white;
+  transition: transform 0.8s;
+}
+#cart:hover {
+  transform: scale(1.2);
 }
 /* .header .username {
   color: #fdbd69;
@@ -62,7 +87,7 @@ h2 {
 }
 /* carousel */
 .carousel {
-  background-color: #131921;
+  background-color: #044255;
 }
 .carousel-item-next,
 .carousel-item-prev,
@@ -75,7 +100,10 @@ h2 {
 }
 
 .carousel-caption h2 {
-  color: #fff;
+  color: #fdbd69;
+  font-family: 'Merriweather', serif;
+
+  font-weight: 100;
 }
 
 .carousel img {

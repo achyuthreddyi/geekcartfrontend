@@ -5,6 +5,7 @@ import {
   PRODUCT_DETAILS_FAIL,
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
+  PRODUCT_DETAILS_RESET,
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -49,6 +50,8 @@ export const productDetailReducer = (
       return { loading: false, product: action.payload }
     case PRODUCT_DETAILS_FAIL:
       return { loading: false, error: action.payload }
+    case PRODUCT_DETAILS_RESET:
+      return { product: {} }
     default:
       return state
   }

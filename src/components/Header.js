@@ -27,7 +27,7 @@ const Header = () => {
     >
       <Container>
         <LinkContainer to='/'>
-          <Navbar.Brand className='logo'>geekcart</Navbar.Brand>
+          <Navbar.Brand id='logo'>geekcart</Navbar.Brand>
         </LinkContainer>
         {/* // dropdown  */}
         <Navbar.Collapse id='basic-navbar-nav'>

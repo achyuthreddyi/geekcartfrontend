@@ -5,7 +5,10 @@ import FormContainer from '../components/FormContainer'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
+import {
+  PRODUCT_DETAILS_RESET,
+  PRODUCT_UPDATE_RESET
+} from '../constants/productConstants'
 import { listProductsDetails, updateProduct } from '../actions/productActions'
 import { Form, Button } from 'react-bootstrap'
 import ProgressBar from '../components/ProgressBar'
@@ -41,6 +44,7 @@ const ProductEditScreen = ({ match, history }) => {
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET })
+      dispatch({ type: PRODUCT_DETAILS_RESET })
       history.push('/admin/productlist')
     } else {
       if (!product || !product.name || product._id !== productId) {

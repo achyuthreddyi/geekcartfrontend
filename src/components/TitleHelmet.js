@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 
 const TitleHelmet = ({ title, description, keywords }) => {
   return (
-    <Helmet>
+    <Helmet className='helmet'>
       <title> {title} </title>
       <meta name='description' content={description} />
       <meta name='keywords' content={keywords} />

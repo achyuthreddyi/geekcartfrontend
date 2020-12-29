@@ -155,18 +155,20 @@ const ProductScreen = ({ history, match }) => {
           <Row>
             <Col md={6}>
               <h2>reviews</h2>
-              {product.reviews.length === 0 && (
+              {product && product.reviews.length === 0 && (
                 <Message error='No reviews be the first one to review this product' />
               )}
               <ListGroup variant='flush'>
-                {product.reviews.map(review => (
-                  <ListGroup.Item key={review._id}>
-                    <strong>{review.name}</strong>
-                    <Rating value={review.rating} />
-                    {/* <p>{review.createdAt.substring(0, 10)}</p> */}
-                    <p>{review.comment}</p>
-                  </ListGroup.Item>
-                ))}
+                {product &&
+                  product.reviews.length > 0 &&
+                  product.reviews.map(review => (
+                    <ListGroup.Item key={review._id}>
+                      <strong>{review.name}</strong>
+                      <Rating value={review.rating} />
+                      {/* <p>{review.createdAt.substring(0, 10)}</p> */}
+                      <p>{review.comment}</p>
+                    </ListGroup.Item>
+                  ))}
                 <ListGroup.Item>
                   <h2>write your reviews</h2>
                   {errorProductReview && (
