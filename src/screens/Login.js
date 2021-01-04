@@ -3,6 +3,9 @@ import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { login } from '../actions/userActions'
+
+import { AiOutlineCopy } from 'react-icons/ai'
+
 import FormContainer from '../components/FormContainer'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -10,6 +13,7 @@ import TitleHelmet from '../components/TitleHelmet'
 
 const Login = ({ location, history }) => {
   const [email, setEmail] = useState('')
+  const [text, setText] = useState('')
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
 
@@ -69,8 +73,29 @@ const Login = ({ location, history }) => {
         <Col>
           New Customer ?
           <Link to={redirect ? `/register?redirect=${redirect}` : `/register`}>
+            {' '}
             Register
           </Link>
+          <br />
+          <p style={{ color: '#044255', pointer: 'cursor' }}>
+            for admin access please use the following credentials
+          </p>
+          <h6>
+            simbha@geekcart.com{' '}
+            <AiOutlineCopy
+              onClick={() => {
+                setEmail('simbha@geekcart.com')
+              }}
+            />
+          </h6>
+          <h6>
+            *********{' '}
+            <AiOutlineCopy
+              onClick={() => {
+                setPassword('123456789')
+              }}
+            />
+          </h6>
         </Col>
       </Row>
     </FormContainer>
