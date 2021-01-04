@@ -13,7 +13,7 @@ import TitleHelmet from '../components/TitleHelmet'
 
 const Login = ({ location, history }) => {
   const [email, setEmail] = useState('')
-  const [text, setText] = useState('')
+
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
 
