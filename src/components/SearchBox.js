@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Form } from 'react-bootstrap'
-import { BiSearchAlt } from 'react-icons/bi'
 
 const SearchBox = ({ history }) => {
   const [keyword, setKeyword] = useState('')
@@ -23,13 +22,6 @@ const SearchBox = ({ history }) => {
         placeholder='Search Products here'
         className='mr-sm-2 ml-sm-5'
       />
-      {/* <Button
-        type='submit'
-        // variant='outline-success'
-        className='p-2 search__button'
-      > */}
-      <BiSearchAlt />
-      {/* </Button> */}
     </Form>
   )
 }
