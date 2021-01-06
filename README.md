@@ -5,4 +5,4 @@ It includes full-featured shopping cart, product reviews, and ratings, admin and
 
 [click here to see the project](http://65.0.205.76/)
 
-continous integration with github actions and app is deployed on aws ec2 instance
+continous integration and continous deployment is implemented for this app with github actions and app is deployed on aws ec2 instance
