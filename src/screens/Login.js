@@ -38,7 +38,7 @@ const Login = ({ location, history }) => {
 
   return (
     <FormContainer>
-      {!loading && !error && <TitleHelmet title={'Login'} />}
+      {!loading && !error && <TitleHelmet title='Login' />}
 
       <h1>Sign In</h1>
       {loading && <Loader />}

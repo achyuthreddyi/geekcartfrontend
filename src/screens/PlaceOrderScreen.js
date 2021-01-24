@@ -26,7 +26,7 @@ const PlaceOrderScreen = ({ history }) => {
     cart.cartItems.reduce((acc, item) => acc + item.price + item.quantity, 0)
   )
   cart.shippingPrice = addDecimals(cart.itemsPrice > 499 ? 0 : 40)
-  // standarf gst on electronics is 18%
+  // standard gst on electronics is 18%
   cart.taxPrice = addDecimals(Number((0.18 * cart.itemsPrice).toFixed(2)))
   cart.totalPrice = addDecimals(
     Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)

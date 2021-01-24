@@ -75,6 +75,8 @@ const ProductEditScreen = ({ match, history }) => {
         countInStock
       })
     )
+    dispatch({ type: PRODUCT_DETAILS_RESET })
+    dispatch({ type: PRODUCT_UPDATE_RESET })
   }
 
   const uploadFileHandler = e => {

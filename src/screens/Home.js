@@ -52,7 +52,14 @@ const Home = ({ match }) => {
           {/* {products.length === 0 && <h1>Error Loading products</h1>} */}
           {products &&
             products.map(product => (
-              <Col key={product._id} sm={12} md={6} lg={3} xlg={3}>
+              <Col
+                key={product._id}
+                sm={12}
+                md={6}
+                lg={3}
+                xlg={3}
+                style={{ display: 'flex', flexDirection: 'row' }}
+              >
                 <Product product={product} />
               </Col>
             ))}

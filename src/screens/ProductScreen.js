@@ -11,7 +11,10 @@ import {
 import Loader from '../components/Loader'
 import Rating from '../components/Rating'
 import Message from '../components/Message'
-import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
+import {
+  PRODUCT_CREATE_REVIEW_RESET,
+  PRODUCT_DETAILS_RESET
+} from '../constants/productConstants'
 
 const ProductScreen = ({ history, match }) => {
   const [quantity, setQuantity] = useState(1)
@@ -54,10 +57,13 @@ const ProductScreen = ({ history, match }) => {
       })
     )
   }
+  const resetProductDetails = () => {
+    dispatch({ type: PRODUCT_DETAILS_RESET })
+  }
 
   return (
     <>
-      <Link className='btn btn-dark my-3' to='/'>
+      <Link className='btn btn-dark my-3' to='/' onClick={resetProductDetails}>
         {' '}
         <AiOutlineArrowLeft /> GoBack
       </Link>
@@ -155,13 +161,13 @@ const ProductScreen = ({ history, match }) => {
           <Row>
             <Col md={6}>
               <h2>reviews</h2>
-              {product && product.reviews.length === 0 && (
+              {product && product?.reviews?.length === 0 && (
                 <Message error='No reviews be the first one to review this product' />
               )}
               <ListGroup variant='flush'>
                 {product &&
-                  product.reviews.length > 0 &&
-                  product.reviews.map(review => (
+                  product?.reviews?.length > 0 &&
+                  product?.reviews.map(review => (
                     <ListGroup.Item key={review._id}>
                       <strong>{review.name}</strong>
                       <Rating value={review.rating} />
@@ -206,6 +212,7 @@ const ProductScreen = ({ history, match }) => {
 
                       <Button
                         disabled={loadingProductReview}
+                        className='btn-block'
                         type='submit'
                         variant='primary'
                       >

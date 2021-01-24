@@ -20,6 +20,7 @@ import {
 } from '../actions/orderActions'
 import CheckoutSteps from '../components/CheckOutSteps'
 import { PayPalButton } from 'react-paypal-button-v2'
+import StripeCheckout from 'react-stripe-checkout'
 import {
   ORDER_DELIVER_RESET,
   ORDER_PAY_RESET
@@ -28,6 +29,11 @@ import {
 const OrderScreen = ({ match, history }) => {
   const orderId = match.params.id
 
+  // const [product, setProduct] = useState({
+  //   name: 'React from facebook',
+  //   price: 10,
+  //   productBy: 'facebook'
+  // })
   const [sdkReady, setSdkReady] = useState(false)
 
   const dispatch = useDispatch()
@@ -95,6 +101,25 @@ const OrderScreen = ({ match, history }) => {
   const successPaymentHandler = paymentResult => {
     console.log('paymentResult', paymentResult)
     dispatch(payOrder(orderId, paymentResult))
+  }
+
+  const makePayment = token => {
+    const body = {
+      token,
+      order
+    }
+
+    const headers = {
+      'Content-Type': 'application/json'
+    }
+    return axios
+      .post('http://localhost:5000/api/config/payment', body, headers)
+      .then(response => {
+        console.log('RESPONSE', response)
+        const { status } = response
+        console.log('STATUS', status)
+      })
+      .catch(error => console.log(error))
   }
 
   return (
@@ -206,7 +231,7 @@ const OrderScreen = ({ match, history }) => {
                               </Link>
                             </Col>
                             <Col md={4}>
-                              {item.quantity} x &#x20B9; {item.price} = $
+                              {item.quantity} x &#x20B9; {item.price} = &#x20B9;
                               {item.quantity * item.price}
                             </Col>
                           </Row>
@@ -237,7 +262,7 @@ const OrderScreen = ({ match, history }) => {
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <Row>
-                      <Col>Tax</Col>
+                      <Col>Tax (18% on electronics)</Col>
                       <Col>&#x20B9; {order.taxPrice}</Col>
                     </Row>
                   </ListGroup.Item>
@@ -262,11 +287,22 @@ const OrderScreen = ({ match, history }) => {
                         )}
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        <Button
-                        // onClick = {instaMojoPay}
-                        >
-                          Pay via instamojo
-                        </Button>
+                        {!order.isPaid && (
+                          <StripeCheckout
+                            stripeKey='pk_test_51Gb6CAHtALsfvJ0e9fmES9u3osTPvsmSccv8YRqKktP96h5FMByUIOBZxbISEJy9MlLAh5hXK0SxmusAHJuDQymG006IGsMNPS'
+                            token={makePayment}
+                            name={order && order.orderItems[0].name}
+                            amount={order && order.totalPrice * 100}
+                            currency='INR'
+                            shippingAddress
+                          >
+                            <Button variant='outline-primary' size='lg' block>
+                              {' '}
+                              pay <strong>&#x20B9;{order.totalPrice} </strong>
+                              using stripe
+                            </Button>
+                          </StripeCheckout>
+                        )}
                       </ListGroup.Item>
                     </>
                   )}

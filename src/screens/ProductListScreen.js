@@ -90,6 +90,7 @@ const ProductListScreen = ({ history }) => {
               <th>Category</th>
               <th>Brand</th>
               <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -106,13 +107,17 @@ const ProductListScreen = ({ history }) => {
                       <i className='fas fa-edit mx-2' />
                     </Button>
                   </LinkContainer>
+                </td>
+                <td>
+                  {/* <LinkContainer> */}
                   <Button
+                    className='align-items-center'
                     variant='danger'
-                    className='btn-sm mx-2'
                     onClick={() => deleteHandler(product._id)}
                   >
                     <i className='fas fa-trash' />
                   </Button>
+                  {/* </LinkContainer> */}
                 </td>
               </tr>
             ))}
