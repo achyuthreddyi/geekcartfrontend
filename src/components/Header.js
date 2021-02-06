@@ -34,7 +34,7 @@ const Header = () => {
               <Nav className='ml-auto'>
                 <LinkContainer to='/cart'>
                   <Nav.Link>
-                    <HiShoppingCart size={20} />
+                    <HiShoppingCart size={30} />
                   </Nav.Link>
                 </LinkContainer>
                 {userInfo && (
