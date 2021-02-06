@@ -35,12 +35,9 @@ const OrderListScreen = ({ history, match }) => {
           <h1>Orders</h1>
         </Col>
       </Row>
-
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Message variant='danger' error={error} />
-      ) : (
+      {loading && <Loader />}
+      {error && <Message variant='danger' error={error} />}
+      {!loading && !error && (
         <Table striped boarded hover responsive className='table-sm'>
           <thead>
             <tr>
@@ -61,19 +58,19 @@ const OrderListScreen = ({ history, match }) => {
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>{order.totalPrice}</td>
                   <td>
-                    {order.isPaid ? (
-                      //FIXME: show the paid at details
+                    {order.isPaid && (
                       <i className='fas fa-check' style={{ color: 'green' }} />
-                    ) : (
+                    )}
+                    {!order.isPaid && (
                       <i className='fas fa-times' style={{ color: 'red' }} />
                     )}
                   </td>
 
                   <td>
-                    {order.isDelivered ? (
-                      //FIXME: show the delivered at details
+                    {order.isDelivered && (
                       <i className='fas fa-check' style={{ color: 'green' }} />
-                    ) : (
+                    )}
+                    {!order.isDelivered && (
                       <i className='fas fa-times' style={{ color: 'red' }} />
                     )}
                   </td>

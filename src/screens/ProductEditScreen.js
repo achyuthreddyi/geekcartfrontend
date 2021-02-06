@@ -144,10 +144,6 @@ const ProductEditScreen = ({ match, history }) => {
               <ProgressBar file={file} setFile={setFile} setImage={setImage} />
             )}
             {uploadError && <Message variant='danger' error={uploadError} />}
-
-            {/* <Form.File id="exampleFormControlFile1" label="Example file input" /> */}
-
-            {/* {uploading && <Loader /> }          */}
           </Form.Group>
           <Form.Group controlId='brand'>
             <Form.Label>Brand</Form.Label>

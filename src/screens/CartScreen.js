@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 // import Message from '../components/Message.js'
-import { AiOutlineArrowLeft, AiOutlineDelete } from 'react-icons/ai'
+import { AiOutlineDelete } from 'react-icons/ai'
 
 import { addToCart, removeCart } from '../actions/cartActions'
 import TitleHelmet from '../components/TitleHelmet.js'
-import Message from '../components/Message'
 
 const CartScreen = ({ match, location, history }) => {
   const productId = match.params.id
@@ -34,21 +33,23 @@ const CartScreen = ({ match, location, history }) => {
   }, [dispatch, productId, quantity])
 
   return (
-    /*eslint-disable */
-
     <Row>
       <TitleHelmet title='Your cart ' />
 
       <Col md={8}>
-        <h1>Shopping Cart</h1>
-        {cartItems.length === 0 ? (
+        {cartItems.length > 0 && <h1>Your Cart</h1>}
+
+        {cartItems.length === 0 && (
           <>
-            <Link className='btn btn-dark my-3' to='/'>
-              <AiOutlineArrowLeft /> GoBack
+            <Link to='/'>
+              <h1>
+                Your cart is empty please consider our products <br />
+                they are super cool as you
+              </h1>
             </Link>
-            <Message error='Your cart is empty please consider our products they are super cool as you' />
           </>
-        ) : (
+        )}
+        {cartItems.length > 0 && (
           <ListGroup variant='flush'>
             {cartItems.map(item => (
               <ListGroup.Item key={item.product}>
@@ -98,6 +99,7 @@ const CartScreen = ({ match, location, history }) => {
           </ListGroup>
         )}
       </Col>
+      {/* right side */}
       <Col md={4}>
         {cartItems.length > 0 && (
           <Card>

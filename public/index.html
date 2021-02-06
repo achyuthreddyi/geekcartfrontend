@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/G.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="achyuth" content="achyuth geekskool" />
@@ -39,6 +39,43 @@
       href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
       rel="stylesheet"
     />
+    <script src="https://js.instamojo.com/v1/checkout.js"></script>
+
+    <script>
+      /* Start client-defined Callback Handler Functions */
+      function onOpenHandler () {
+        alert('Payments Modal is Opened')
+      }
+
+      function onCloseHandler () {
+        alert('Payments Modal is Closed')
+      }
+
+      function onPaymentSuccessHandler (response) {
+        alert('Payment Success')
+        console.log('Payment Success Response', response)
+      }
+
+      function onPaymentFailureHandler (response) {
+        alert('Payment Failure')
+        console.log('Payment Failure Response', response)
+      }
+      /* End client-defined Callback Handler Functions */
+
+      /* Configuring Handlers */
+      Instamojo.configure({
+        handlers: {
+          onOpen: onOpenHandler,
+          onClose: onCloseHandler,
+          onSuccess: onPaymentSuccessHandler,
+          onFailure: onPaymentFailureHandler
+        }
+      })
+
+      function onButtonClick () {
+        Instamojo.open('http://www.instamojo.com/@ayushya')
+      }
+    </script>
 
     <title>GeekCart</title>
   </head>

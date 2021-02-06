@@ -115,11 +115,10 @@ const ProfileScreen = ({ history }) => {
 
         <Col md={9}>
           <h2>My Orders</h2>
-          {loadingOrders ? (
-            <Loader />
-          ) : errorOrders ? (
-            <Message variant='danger' error={errorOrders} />
-          ) : (
+
+          {loadingOrders && <Loader />}
+          {errorOrders && <Message variant='danger' error={errorOrders} />}
+          {!loadingOrders && !errorOrders && (
             <Table striped bordered hover responsive className='table-sm'>
               <thead>
                 <tr>
@@ -139,26 +138,23 @@ const ProfileScreen = ({ history }) => {
                       <td> {order.createdAt.substring(0, 10)} </td>
                       <td> {order.totalPrice} </td>
                       <td>
-                        {' '}
-                        {order.isPaid ? (
-                          order.paidAt.substring(0, 10)
-                        ) : (
+                        {order.isPaid && order.paidAt.substring(0, 10)}
+                        {!order.isPaid && (
                           <i
                             className='fas fa-times'
                             style={{ color: 'red' }}
                           />
-                        )}{' '}
+                        )}
                       </td>
                       <td>
-                        {' '}
-                        {order.isDelivered ? (
-                          order.deliveredAt.substring(0, 10)
-                        ) : (
+                        {order.isDelivered &&
+                          order.deliveredAt.substring(0, 10)}
+                        {!order.isDelivered && (
                           <i
                             className='fas fa-times'
                             style={{ color: 'red' }}
                           />
-                        )}{' '}
+                        )}
                       </td>
                       <td>
                         <LinkContainer to={`/order/${order._id}`}>

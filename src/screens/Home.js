@@ -27,27 +27,21 @@ const Home = ({ match }) => {
   return (
     <div>
       <TitleHelmet />
-      {!keyword ? (
-        <ProductCarousel />
-      ) : (
+
+      {!keyword && <ProductCarousel />}
+      {keyword && (
         <Link to='/' className='btn btn-light'>
           {' '}
           <AiOutlineArrowLeft />
           Go Back
         </Link>
       )}
-
-      {/* {!loading && <ProductCarousel />} */}
       {loading && <Loader />}
-      {/* {error && <Message variant='success' children={error}></Message>} */}
-      {/* eslint-disable */}
       {!keyword && <h1>Latest Products @ cheapest prices</h1>}
+      {loading && <Loader />}
+      {error && <Message variant='success' data={error} />}
 
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Message variant='success' data={error}></Message>
-      ) : (
+      {!loading && !error && (
         <Row>
           {/* {products.length === 0 && <h1>Error Loading products</h1>} */}
           {products &&
@@ -68,5 +62,4 @@ const Home = ({ match }) => {
     </div>
   )
 }
-
 export default Home

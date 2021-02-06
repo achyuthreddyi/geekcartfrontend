@@ -10,6 +10,8 @@ import {
   Card
   // ListGroupItem
 } from 'react-bootstrap'
+import { AiOutlineCoffee } from 'react-icons/ai'
+
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -62,6 +64,17 @@ const OrderScreen = ({ match, history }) => {
       )
     )
   }
+
+  // const addInstamojoScript = () => {
+  //   const script = document.createElement('script')
+  //   script.type = 'text/javascript'
+  //   script.src = 'https://js.instamojo.com/v1/checkout.js'
+  //   document.appendChild(script)
+  // }
+
+  // const buyMeACoffee = () => {
+  //   Instamojo.open('http://www.instamojo.com/@ayushya')
+  // }
 
   useEffect(() => {
     if (!userInfo) {
@@ -164,12 +177,13 @@ const OrderScreen = ({ match, history }) => {
                     {', '}
                     {order.shippingAddress.country}
                   </p>
-                  {order.isDelivered ? (
+                  {order.isDelivered && (
                     <Message
                       variant='success'
                       error={`Delivered on ${order.deliveredAt}`}
                     />
-                  ) : (
+                  )}
+                  {!order.isDelivered && (
                     <Message variant='secondary' error='Not Delivered' />
                   )}
                 </ListGroup.Item>
@@ -180,12 +194,13 @@ const OrderScreen = ({ match, history }) => {
                     <strong>Method: </strong>
                     {order.paymentMethod}
                   </p>
-                  {order.isPaid ? (
+                  {order.isPaid && (
                     <Message
                       variant='success'
                       error={`Paid on ${order.paidAt}`}
                     />
-                  ) : (
+                  )}
+                  {!order.isPaid && (
                     <Message variant='danger' error='Not Paid' />
                   )}
                 </ListGroup.Item>
@@ -207,12 +222,13 @@ const OrderScreen = ({ match, history }) => {
 
                 <ListGroup.Item>
                   <h2>Order Items</h2>
-                  {order.orderItems.length === 0 ? (
+                  {order.orderItems.length === 0 && (
                     <>
                       <Message>Order is empty</Message>
                       Try our products ?<Link to='/'>main Page</Link>
                     </>
-                  ) : (
+                  )}
+                  {order.orderItems.length > 0 && (
                     <ListGroup variant='flush'>
                       {order.orderItems.map((item, index) => (
                         <ListGroup.Item key={index}>
@@ -242,6 +258,7 @@ const OrderScreen = ({ match, history }) => {
                 </ListGroup.Item>
               </ListGroup>
             </Col>
+
             <Col md={4}>
               <Card>
                 <ListGroup variant='flush'>
@@ -277,9 +294,8 @@ const OrderScreen = ({ match, history }) => {
                     <>
                       <ListGroup.Item>
                         {loadingPay && <Loader />}
-                        {!sdkReady ? (
-                          <Loader />
-                        ) : (
+                        {!sdkReady && <Loader />}
+                        {sdkReady && (
                           <PayPalButton
                             amount={order.totalPrice}
                             onSuccess={successPaymentHandler}
@@ -305,6 +321,18 @@ const OrderScreen = ({ match, history }) => {
                         )}
                       </ListGroup.Item>
                     </>
+                  )}
+                  {userInfo && userInfo.role === 0 && (
+                    <ListGroup.Item>
+                      <Button
+                        variant='outline-warning'
+                        size='lg'
+                        block
+                        onclick='onButtonClick()'
+                      >
+                        buy me a <AiOutlineCoffee />
+                      </Button>
+                    </ListGroup.Item>
                   )}
 
                   {loadingDeliver && <Loader />}

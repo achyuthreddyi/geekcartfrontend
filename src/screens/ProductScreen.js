@@ -15,6 +15,7 @@ import {
   PRODUCT_CREATE_REVIEW_RESET,
   PRODUCT_DETAILS_RESET
 } from '../constants/productConstants'
+import TitleHelmet from '../components/TitleHelmet'
 
 const ProductScreen = ({ history, match }) => {
   const [quantity, setQuantity] = useState(1)
@@ -70,6 +71,7 @@ const ProductScreen = ({ history, match }) => {
       {loading && <Loader />}
       {product && (
         <>
+          <TitleHelmet title={product.name} />
           <Row>
             <Col md={6}>
               <Image
@@ -157,7 +159,6 @@ const ProductScreen = ({ history, match }) => {
               </Card>
             </Col>
           </Row>
-
           <Row>
             <Col md={6}>
               <h2>reviews</h2>
@@ -220,7 +221,15 @@ const ProductScreen = ({ history, match }) => {
                       </Button>
                     </Form>
                   ) : (
-                    <Message variant='danger' error='please login' />
+                    <>
+                      <Link to='/login'>
+                        <p style={{ color: '#DC143C', fontWeight: 800 }}>
+                          Please Login to post your perspective on the product
+                        </p>
+                      </Link>
+                    </>
+
+                    // <Message variant='danger' error='please login' />
                   )}
                 </ListGroup.Item>
               </ListGroup>

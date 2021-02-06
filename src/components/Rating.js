@@ -7,50 +7,29 @@ const Rating = ({ value, text, color }) => {
   return (
     <div className='rating'>
       <span>
-        {value >= 1 ? (
-          <AiFillStar style={{ color: '#fdbd69' }} />
-        ) : value >= 0.5 ? (
-          <BsStarHalf style={{ color: '#fdbd69' }} />
-        ) : (
-          <AiOutlineStar />
-        )}
+        {value >= 1 && <AiFillStar style={{ color: '#fdbd69' }} />}
+        {value >= 0.5 && <BsStarHalf style={{ color: '#fdbd69' }} />}
+        {!value >= 1 && !value >= 0.5 && <AiOutlineStar />}
       </span>
       <span>
-        {value >= 2 ? (
-          <AiFillStar style={{ color: '#fdbd69' }} />
-        ) : value >= 1.5 ? (
-          <BsStarHalf style={{ color: '#fdbd69' }} />
-        ) : (
-          <AiOutlineStar />
-        )}{' '}
+        {value >= 2 && <AiFillStar style={{ color: '#fdbd69' }} />}
+        {value >= 1.5 && <BsStarHalf style={{ color: '#fdbd69' }} />}
+        {!value >= 2 && !value >= 1.5 && <AiOutlineStar />}
       </span>
       <span>
-        {value >= 3 ? (
-          <AiFillStar style={{ color: '#fdbd69' }} />
-        ) : value >= 2.5 ? (
-          <BsStarHalf style={{ color: '#fdbd69' }} />
-        ) : (
-          <AiOutlineStar />
-        )}{' '}
+        {value >= 3 && <AiFillStar style={{ color: '#fdbd69' }} />}
+        {value >= 2.5 && <BsStarHalf style={{ color: '#fdbd69' }} />}
+        {!value >= 3 && !value >= 2.5 && <AiOutlineStar />}
       </span>
       <span>
-        {value >= 4 ? (
-          <AiFillStar style={{ color: '#fdbd69' }} />
-        ) : value >= 3.5 ? (
-          <BsStarHalf style={{ color: '#fdbd69' }} />
-        ) : (
-          <AiOutlineStar />
-        )}{' '}
+        {value >= 4 && <AiFillStar style={{ color: '#fdbd69' }} />}
+        {value >= 3.5 && <BsStarHalf style={{ color: '#fdbd69' }} />}
+        {!value >= 4 && !value >= 3.5 && <AiOutlineStar />}
       </span>
       <span>
-        {' '}
-        {value >= 5 ? (
-          <AiFillStar style={{ color: '#fdbd69' }} />
-        ) : value >= 4.5 ? (
-          <BsStarHalf style={{ color: '#fdbd69' }} />
-        ) : (
-          <AiOutlineStar />
-        )}{' '}
+        {value >= 5 && <AiFillStar style={{ color: '#fdbd69' }} />}
+        {value >= 4.5 && <BsStarHalf style={{ color: '#fdbd69' }} />}
+        {!value >= 5 && !value >= 4.5 && <AiOutlineStar />}
       </span>
       <span>{text && text} </span>
     </div>

@@ -38,7 +38,7 @@ const Header = () => {
                 <HiShoppingCart size={30} />
               </Nav.Link>
             </LinkContainer>
-            {userInfo ? (
+            {userInfo && (
               <NavDropdown title={userInfo.name} id='username'>
                 <LinkContainer to='/profile'>
                   <NavDropdown.Item>Profile</NavDropdown.Item>
@@ -47,7 +47,8 @@ const Header = () => {
                   Logout
                 </NavDropdown.Item>
               </NavDropdown>
-            ) : (
+            )}
+            {!userInfo && (
               <LinkContainer to='/login'>
                 <Nav.Link id='username'>
                   <AiFillLock size={30} /> Sign In
