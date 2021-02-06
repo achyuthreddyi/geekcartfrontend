@@ -130,4 +130,8 @@ h2 {
   .carousel-caption h2 {
     font-size: 2.5vw;
   }
+  .cardImage {
+    width: '100%';
+    height: '15vw';
+  }
 }

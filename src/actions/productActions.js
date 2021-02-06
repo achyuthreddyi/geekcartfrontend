@@ -23,9 +23,9 @@ import {
   PRODUCT_UPDATE_SUCCESS
 } from '../constants/productConstants'
 
-export const listProducts = (keyword = '') => async disapatch => {
+export const listProducts = (keyword = '') => async dispatch => {
   try {
-    disapatch({ type: PRODUCT_LIST_REQUEST })
+    dispatch({ type: PRODUCT_LIST_REQUEST })
     // const { data } = await axios.get(`/api/product?keyword=${keyword}`)
     // const { data } = await axios.get(
     //   `http://13.233.225.31/api/product?keyword=${keyword}`
@@ -34,12 +34,12 @@ export const listProducts = (keyword = '') => async disapatch => {
       `http://65.0.205.76:5000/api/product?keyword=${keyword}`
     )
     // console.log(await axios.get('http://localhost:5000/api/product/'))
-    disapatch({
+    dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data
     })
   } catch (error) {
-    disapatch({
+    dispatch({
       type: PRODUCT_LIST_FAIL,
       payload: error.response
     })

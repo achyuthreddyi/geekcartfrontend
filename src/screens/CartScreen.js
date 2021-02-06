@@ -61,7 +61,6 @@ const CartScreen = ({ match, location, history }) => {
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
                   <Col md={2} className='align__center'>
-                    {' '}
                     Price: &#x20B9; {item.price}
                   </Col>
 
